@@ -7,11 +7,12 @@ import argparse
 import glob
 
 parser = argparse.ArgumentParser()
-parser._optionals.title = "Options"
+parser._optionals.title = "Parameters"
 parser.add_argument('-m', nargs = 1, help = 'Mapping file. [Required]', required = True)
 parser.add_argument('-i', nargs = 1, help = 'OTU table. [Required]', required = True)
-parser.add_argument('-t', nargs = 1, help = 'A phylogenetic tree.', required = True)
+parser.add_argument('-t', nargs = 1, help = 'A phylogenetic tree. [Required]', required = True)
 parser.add_argument('-o', nargs = 1, help = 'A name that is given to the output files. [Required]', required = True)
+parser.add_argument('-p', nargs = 1, help = 'Path to the script produce_beta_diversity_plots.R. [Required]', required = True)
 args = parser.parse_args()
 arguments = vars(args)
 
@@ -33,8 +34,5 @@ file_name = 'Beta_diversity_%s/plot_generated_by_phyloseq.eps' % output_name
 cmd = "biom convert -i %s -o json_format_%s --table-type='OTU table' --to-json" % (''.join(arguments['i']),''.join(arguments['i']))
 subprocess.call(cmd, shell = True)
 
-cmd = "Rscript produce_beta_diversity_plots.R json_format_%s %s %s %s" % (''.join(arguments['i']), ''.join(arguments['m']), beta_div_file[0], file_name) 
-subprocess.call(cmd, shell = True)
-
-cmd = "rm json_format_%s" % ''.join(arguments['i'])
+cmd = "Rscript %s json_format_%s %s %s %s" % (''.join(arguments['p']), ''.join(arguments['i']), ''.join(arguments['m']), beta_div_file[0], file_name) 
 subprocess.call(cmd, shell = True)
