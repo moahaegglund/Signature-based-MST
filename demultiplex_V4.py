@@ -110,9 +110,9 @@ for barcode in barcodes:
 
 for barcode in barcodes:
 	print('Fixing fasta and fastq file for ' + barcode)
-	cmd = "%sfix_header.py deplex_temporary_files_%s/check_map/*_corrected.txt deplex_temporary_files_%s/mapping_all/seqs_%s.fna %s deplex_temporary_files_%s" % (scripts_dir, output_name, barcode, output_name, barcode, output_name)
+	cmd = "%sfix_header.py deplex_temporary_files_%s/check_map/*_corrected.txt deplex_temporary_files_%s/mapping_all/seqs_%s.fna %s deplex_temporary_files_%s" % (scripts_dir, output_name, output_name, barcode, barcode, output_name)
 	subprocess.call(cmd, shell = True)
-	cmd = "%sfix_header_fastq.py deplex_temporary_files_%s/check_map/*_corrected.txt deplex_temporary_files_%s/mapping_all_fastq/seqs_%s.fastq %s deplex_temporary_files_%s" % (scripts_dir, output_name, barcode, output_name, barcode, output_name)
+	cmd = "%sfix_header_fastq.py deplex_temporary_files_%s/check_map/*_corrected.txt deplex_temporary_files_%s/mapping_all_fastq/seqs_%s.fastq %s deplex_temporary_files_%s" % (scripts_dir, output_name, output_name, barcode, barcode, output_name)
 	subprocess.call(cmd, shell = True)
 
 ## Fix final fasta and fastq files
@@ -134,8 +134,11 @@ cmd = "mv deplex_temporary_files_%s/%s.hist* %s_demultiplexed_data/Histograms/."
 subprocess.call(cmd, shell = True)
 cmd = "mv deplex_temporary_files_%s/check_map/*_corrected.txt %s_demultiplexed_data/." % (output_name, output_name)
 subprocess.call(cmd, shell = True)
-cmd = "mv deplex_temporary_files_%s/corrected_all.* %s_demultiplexed_data/." % (output_name, output_name)
+cmd = "mv deplex_temporary_files_%s/corrected_all.fna %s_demultiplexed_data/%s.fna" % (output_name, output_name, output_name)
 subprocess.call(cmd, shell = True)
+cmd = "mv deplex_temporary_files_%s/corrected_all.fastq %s_demultiplexed_data/%s.fastq" % (output_name, output_name, output_name)
+subprocess.call(cmd, shell = True)
+
 
 ## Remove the files that are created during the script. 
 if keep == False:
