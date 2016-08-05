@@ -30,10 +30,11 @@ subprocess.call(cmd, shell = True)
 
 file_name = 'Beta_diversity_%s/plot_generated_by_phyloseq.eps' % output_name
 
-cmd = "Rscript produce_beta_diversity_plots.R %s %s %s %s" % (''.join(arguments['i']), ''.join(arguments['m']), beta_div_file[0], file_name) 
+cmd = "biom convert -i %s -o json_format_%s --table-type='OTU table' --to-json" % (''.join(arguments['i']),''.join(arguments['i']))
 subprocess.call(cmd, shell = True)
 
+cmd = "Rscript produce_beta_diversity_plots.R json_format_%s %s %s %s" % (''.join(arguments['i']), ''.join(arguments['m']), beta_div_file[0], file_name) 
+subprocess.call(cmd, shell = True)
 
-
-
-
+cmd = "rm json_format_%s" % ''.join(arguments['i'])
+subprocess.call(cmd, shell = True)
