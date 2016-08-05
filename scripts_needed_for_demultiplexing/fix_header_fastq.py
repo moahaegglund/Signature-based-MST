@@ -1,4 +1,4 @@
-#/usr/bin/env python
+#!/usr/bin/env python
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_dna
 from collections import defaultdict
