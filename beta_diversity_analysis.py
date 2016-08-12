@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+'''
+Script that performs a beta diversity analysis using the metric unweighted unifrac.
+Dependencies: QIIME, the script "produce_beta_diversity_plot.R".
+by Moa Hammarstrom
+'''
+
 import subprocess
 import sys
 import os
@@ -11,7 +17,7 @@ parser._optionals.title = "Parameters"
 parser.add_argument('-m', nargs = 1, help = 'Mapping file. [Required]', required = True)
 parser.add_argument('-i', nargs = 1, help = 'OTU table. [Required]', required = True)
 parser.add_argument('-t', nargs = 1, help = 'A phylogenetic tree. [Required]', required = True)
-parser.add_argument('-p', nargs = 1, help = 'Path to the script produce_beta_diversity_plots.R. [Required]', required = True)
+parser.add_argument('-p', nargs = 1, help = 'Path to the script produce_beta_diversity_plot.R. [Required]', required = True)
 args = parser.parse_args()
 arguments = vars(args)
 
