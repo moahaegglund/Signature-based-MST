@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-# Script that combines QIIME scripts in order to create a phylogenetic tree.
-# by Moa Hammarstrom
+'''
+Script that combines different QIIME scripts in order to create a phylogenetic tree.
+by Moa Hammarstroem
+'''
 
 import sys
 import subprocess
@@ -12,10 +14,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser._optionals.title = "Parameters"
-parser.add_argument('-i', nargs ='+', help = 'Path to input otu mapping file. [Required]', required = True)
+parser.add_argument('-i', nargs ='+', help = 'OTU mapping file. [Required]', required = True)
 parser.add_argument('-O', nargs=1, help = 'Number of jobs to start. [Default is 8.]')
-parser.add_argument('-r', nargs=1, help = 'Filepath for preferred reference sequences, for example from Greengenes. [Required]', required = True)
-parser.add_argument('-a', nargs=1, help = 'Filepath for template alignment, for example from Greengenes. [Required]', required = True)
+parser.add_argument('-r', nargs=1, help = 'Reference sequences, for example from Greengenes. [Required]', required = True)
+parser.add_argument('-a', nargs=1, help = 'Template alignment, for example from Greengenes. [Required]', required = True)
 args = parser.parse_args()
 arguments = vars(args)
 

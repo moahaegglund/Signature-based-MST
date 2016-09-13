@@ -3,7 +3,7 @@
 '''
 Script that performs a beta diversity analysis using the metric unweighted unifrac.
 Dependencies: QIIME, the script "produce_beta_diversity_plot.R".
-by Moa Hammarstrom
+by Moa Hammarstroem
 '''
 
 import subprocess

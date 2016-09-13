@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+'''
+Script that calls different QIIME scripts in order to perform filtration of an OTU table and convert it to classic format.
+by Moa Hammarstroem
+'''
+
 import sys
 import subprocess
 import os

@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
 
-## This script is a modified function from the script "sourcetracker_for_qiime.r" by Dan Knights.
+## This script is a modification of a function from the script "sourcetracker_for_qiime.r" by Dan Knights.
 ## The function that creates the folder full_results is modified to fit our desires.
-## by Moa Hammarstrom
+## by Moa Hammarstroem
 
 
 helpstr <- c('-i OTU table, QIIME formatted in classic format.\n-t Utilized reference taxonomy (e.g. taxonomy file from GreenGenes).\n-r The results file of the SourceTracker analysis (results.RData)\n-o Name of the folder where the modified full results data will be stored.')

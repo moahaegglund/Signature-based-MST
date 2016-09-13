@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 
-# Script to produce a PCoA plot that visualize the result of a beta diversity analysis performed in QIIME. 
-# The script is called from the function "beta_diversity_analysis.py"
-# Dependencies: phyloseq, ggplot2.
-# by Moa Hammarstrom
+## Script to produce a PCoA plot that visualize the result of a beta diversity analysis performed in QIIME. 
+## The script is called from the function "beta_diversity_analysis.py"
+## Dependencies: phyloseq, ggplot2.
+## by Moa Hammarstroem
 
 args = commandArgs(trailingOnly = TRUE)
 require(ggplot2)
