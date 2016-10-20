@@ -12,7 +12,7 @@ The folder "scripts_needed_for_demultiplexing" has to be supplied along with the
 
 #### Example
 <code>
-demultiplex_V4.py -r1 [the R1 file] -r2 [the R2 file] -i1 [the I1 file] -i2 [the I2 file] -p [path to the folder 'scripts_needed_for_demultiplexing'] -o [name of output directory]
+demultiplex_V4.py -r1 [the R1 file] -r2 [the R2 file] -i1 [the I1 file] -i2 [the I2 file] -p [path to the folder /scripts_needed_for_demultiplexing] -o [name of output directory]
 </code>
 
 ### create_phylogenetic_tree.py
