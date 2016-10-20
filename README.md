@@ -28,8 +28,26 @@ create_phylogenetic_tree.py -i [OTU mapping file] -O [number of jobs] -r [refere
 </code>
 
 ### filter_otu_table.py
+A wrapper of different QIIME scripts that performs filtration of an OTU table and transforms it into classic format. The following filtrations are performed:
+* Removal of singletons.
+* Dicard the OTUs with a number of sequences >0.001% of the total number of sequences.
+* An OTU must be observed in at least 3 samples to be retained.
+
+#### Dependencies
+* QIIME
+
+#### Example
+<code>
+filter_otu_table.py -i [OTU table]
+</code>
 
 ### beta_diversity_analysis.py
 The script beta_diversity_analysis.py calls the function produce_beta_diversity_plot.R
+
+#### Dependencies
+* The script  "produce_beta_diversity_plot.R"
+* QIIME
+* Phyloseq
+* ggplot2
 
 ### modify_full_results.R
