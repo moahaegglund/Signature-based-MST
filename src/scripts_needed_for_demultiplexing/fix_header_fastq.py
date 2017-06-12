@@ -27,7 +27,7 @@ outname = basename.replace('seqs', 'corrected')
 
 d = defaultdict(dict)
 
-print('Loading mapping file: ' + mappingfile)
+print 'Loading mapping file: ' + mappingfile
 
 handle = open(mappingfile, "rU")
 header = handle.readline()
@@ -44,18 +44,19 @@ handle.close()
 tmp = fastqfile.split('/')[1]
 tmp=os.path.splitext(tmp)[0]
 barcode_rc = reverse_complement(barcode)
+print tmp
 
-print('Found reverse barcode: ' + barcode)
-print('Reverse complemented reverse barcode: ' + barcode_rc)
+print 'Found reverse barcode: ' + barcode
+print 'Reverse complemented reverse barcode: ' + barcode_rc
 
-print('Loading fastq file: ' + fastqfile)
+print 'Loading fastq file: ' + fastqfile
 handle = open(fastqfile, "rU")
 out = '%s/%s' % (directory_name, outname)
 outfile = open(out, 'w')
 skipline = False
 
 for line in handle:
-    if line.startswith( '@F' ):
+    if line.startswith( '@Forwardbarcode' ):
         ID, machine, orig_bc, new_bc, bc_diffs = line.split(' ')
         fprimer = reverse_complement(new_bc.split('=')[1])
         rprimer = barcode_rc
@@ -63,16 +64,21 @@ for line in handle:
             ID = d[rprimer][fprimer]
         except KeyError:
             skipline = True
+	    counter = 0
             continue
         bc = rprimer + fprimer
         headerline = '@' + ID + ' ' + machine + ' orig_bc=' + bc + ' new_bc=' + bc + ' bc_diffs=0\n'
         outfile.write(headerline)
     else:
-        if skipline != True:
+        if skipline == False:
             outfile.write(line)
-        skipline = False
+	else:
+	    counter += 1
+	    if counter == 3:
+		counter = 0
+		skipline = False
 
 handle.close()
 outfile.close()
 
-print('Sequences are written to: ' + outname + '\n')
+print 'Sequences are written to: ' + outname + '\n'
